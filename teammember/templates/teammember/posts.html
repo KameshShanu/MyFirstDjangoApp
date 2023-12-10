@@ -18,15 +18,19 @@
             {% for member in teammember_list %}
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="https://via.placeholder.com/150x100" alt="Card image cap">
+                    <img class="card-img-top" src="https://via.placeholder.com/150x100" alt="Card-image-cap">
                     <div class="card-body">
-                        <h4 class="lead"><a class="text-dark" href="{% url 'teammember:single' member.pk %}">{{ member.title }}</a> </h4>
+                        <h4 class="lead"><a class="text-dark" href="{% url 'teammember:single' member.pk %}">{{
+                                member.title }}</a> </h4>
                         <p class="card-text"></p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="sample-text">sample</div>
                             <div class="btn-group">
                                 <a href="{{ member.get_absolute_url }}" class="btn btn-sm btn-outline-primary"
                                     role="button" area-pressed="true">View</a>
+                                <a href="{% url 'teammember:edit' member.pk %}" class="btn btn-sm btn-outline-secondary"
+                                    role="button" area-pressed="true">Edit</a>
+                                <a href="{% url 'teammember:delete' member.pk %}" class="btn btn-sm btn-outline-secondary"
+                                    role="button" area-pressed="true">Delete</a>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>

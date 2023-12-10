@@ -1,5 +1,5 @@
 from .models import Teammember
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -23,3 +23,16 @@ class AddView(CreateView):
     template_name = 'teammember/add.html'
     fields = '__all__'
     success_url = reverse_lazy('teammember:posts')
+
+class EditView(UpdateView):
+    model = Teammember
+    template_name = 'teammember/edit.html'
+    fields = '__all__'
+    pk_url_kwarg = 'pk'
+    success_url = reverse_lazy('teammember:posts')
+
+class Delete(DeleteView):
+    model = Teammember
+    pk_url_kwarg = 'pk'
+    success_url = reverse_lazy('teammember:posts')
+    template_name = 'teammember/confirm-delete.html'
