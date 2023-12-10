@@ -22,17 +22,17 @@ class AddView(CreateView):
     model = Teammember
     template_name = 'teammember/add.html'
     fields = '__all__'
-    success_url = reverse_lazy('teammember:posts')
+    success_url = '/'
 
 class EditView(UpdateView):
     model = Teammember
     template_name = 'teammember/edit.html'
     fields = '__all__'
     pk_url_kwarg = 'pk'
-    success_url = reverse_lazy('teammember:posts')
+    success_url = '/'
 
 class Delete(DeleteView):
     model = Teammember
     pk_url_kwarg = 'pk'
-    success_url = reverse_lazy('teammember:posts')
     template_name = 'teammember/confirm-delete.html'
+    success_url = '/'
