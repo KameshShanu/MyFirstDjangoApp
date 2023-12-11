@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'teammember',
     'widget_tweaks',
+    'phone_field',
 ]
 
 SITE_ID = 1

@@ -2,22 +2,22 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
+from phone_field import PhoneField
 
 # Create your models here.
 class Teammember(models.Model):
 
-    title = models.CharField(max_length=200)
-    excerpt = models.TextField(null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='teammember')
-    slug = models.SlugField(max_length=100, unique=True)
+    firstName = models.CharField(max_length=200, null=True)
+    lastName = models.CharField(max_length=200, null=True)
+    email = models.EmailField(max_length=254, null=True)
+    phone = PhoneField(blank=True, help_text='Contact phone number')
+    is_Regular = models.BooleanField("Regular", default=False)
+    is_Admin = models.BooleanField("Admin", default=False)
     updated = models.DateTimeField(auto_now=True)
     published = models.DateTimeField(default=timezone.now)
-
-    def get_absolute_url(self):
-        return reverse('teammember:single', args=[self.slug])
     
     class Meta:
         ordering = ['-published']
 
     def __str__(self):
-        return self.title
+        return self.firstName
