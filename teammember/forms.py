@@ -1,7 +1,10 @@
 from django import forms
 from .models import Teammember
 
-NUMS = [('Regular','Admin')]
+NUMS = [
+        ('regular','Regular'),
+        ('admin', 'Admin'),
+        ]
 
 class PostForm(forms.ModelForm):
     class Meta:
